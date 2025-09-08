@@ -10,6 +10,9 @@ public class Goomba : MonoBehaviour
     [SerializeField] LayerMask layer;
     [SerializeField] bool isColliding;
 
+
+    
+
     private void Awake()
     {
         rbGoomba = GetComponent<Rigidbody2D>();
