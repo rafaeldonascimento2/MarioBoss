@@ -4400,16 +4400,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: characters_159
+      name: GoombaWalk_01
       rect:
         serializedVersion: 2
-        x: 295
-        y: 197
+        x: 218
+        y: 229
         width: 18
-        height: 18
+        height: 17
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 1, y: 1, z: 1, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -4422,16 +4422,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: characters_160
+      name: GoombaWalk_02
       rect:
         serializedVersion: 2
         x: 314
         y: 197
         width: 18
-        height: 18
+        height: 17
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 1, y: 1, z: 1, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -6797,6 +6797,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: characters_46
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 367
+        width: 18
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e88144a28019f4d4099e93d2c7d42222
+      internalID: 1031573314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoombaWalk_0
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 197
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 1, z: 1, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1134bd87713b5f04ba266452b5562a0d
+      internalID: -758821490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -6811,6 +6855,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      GoombaWalk_0: -758821490
+      GoombaWalk_01: 6148645298536735289
+      GoombaWalk_02: 8524459423514286352
       Jump: 1820790034032967366
       Mario_Idle: -1509298647979629103
       Walk_01: 1447068007
@@ -6883,9 +6930,7 @@ TextureImporter:
       characters_156: 22443971794499777
       characters_157: 1799885043186071512
       characters_158: -8049014845997942409
-      characters_159: 6148645298536735289
       characters_16: 8901077990765384427
-      characters_160: 8524459423514286352
       characters_161: 1350468951169306123
       characters_162: 6834748367497061436
       characters_163: -2185959815858330560
@@ -7023,6 +7068,7 @@ TextureImporter:
       characters_43: -6878064802024223989
       characters_44: -769081741
       characters_45: -3889344650559148656
+      characters_46: 1031573314
       characters_48: -7365091535247084893
       characters_5: -6066236442320969475
       characters_50: -6626920692342517838
