@@ -20,6 +20,7 @@ public class Goomba : MonoBehaviour
 
     }
 
+
     private void FixedUpdate()
     {
         rbGoomba.linearVelocity = new Vector2(speed, rbGoomba.linearVelocity.y);
@@ -37,7 +38,7 @@ public class Goomba : MonoBehaviour
 
 
 
-    // Update is called once per frame
+    
     void Update()
     {
 

@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float lowJumpCut = 0.4f; // <1 corta a subida ao soltar
 
-    // inputs
     private bool jumpPressed;
     private bool jumpHeld;
 
@@ -40,13 +39,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        // ----- Jump input -----
+        // ----- Jump -----
         if (Input.GetButtonDown("Jump")) jumpPressed = true;
         jumpHeld = Input.GetButton("Jump");
 
 aniPlayer.SetBool("Jump", !Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer)); 
 
-        // ----- Double-tap detection -----
+        // ----- Double-tap -----
         // esquerda
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -88,12 +87,12 @@ aniPlayer.SetBool("Jump", !Physics2D.OverlapCircle(groundCheck.position, groundC
         // pulo
         if (jumpPressed && isGrounded)
         {
-            var v = rbPlayer.linearVelocity; // troque por linearVelocity se seu Unity exigir
+            var v = rbPlayer.linearVelocity; 
             v.y = jumpForce;
             rbPlayer.linearVelocity = v;
         }
 
-        // cortar a subida se soltar o botão
+        // para de subir se soltar o botão
         if (!jumpHeld && rbPlayer.linearVelocity.y > 0f)
         {
             rbPlayer.linearVelocity = new Vector2(rbPlayer.linearVelocity.x, rbPlayer.linearVelocity.y * lowJumpCut);
@@ -112,7 +111,7 @@ aniPlayer.SetBool("Jump", !Physics2D.OverlapCircle(groundCheck.position, groundC
 
         aniPlayer.SetFloat("Speed", Mathf.Abs(xMove * currentSpeed));   
 
-        // aplicar corrida se direção bate com o input atual
+        // corrida
         if (running && Mathf.Sign(xMove) == runDir && xMove != 0f)
             currentSpeed *= runMultiplier;
 
