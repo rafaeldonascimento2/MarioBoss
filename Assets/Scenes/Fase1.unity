@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1573662}
   - component: {fileID: 1573663}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 24035873}
   - component: {fileID: 24035874}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 93908393}
   - component: {fileID: 93908394}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ GameObject:
   m_Component:
   - component: {fileID: 137668073}
   - component: {fileID: 137668074}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 168431374}
   - component: {fileID: 168431375}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +564,7 @@ GameObject:
   m_Component:
   - component: {fileID: 195306654}
   - component: {fileID: 195306655}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -651,7 +651,7 @@ GameObject:
   m_Component:
   - component: {fileID: 288909280}
   - component: {fileID: 288909281}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -738,7 +738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 336963584}
   - component: {fileID: 336963585}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -825,7 +825,7 @@ GameObject:
   m_Component:
   - component: {fileID: 351229196}
   - component: {fileID: 351229197}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (35)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -912,7 +912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 358715605}
   - component: {fileID: 358715606}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -999,7 +999,7 @@ GameObject:
   m_Component:
   - component: {fileID: 441393900}
   - component: {fileID: 441393901}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1086,7 +1086,7 @@ GameObject:
   m_Component:
   - component: {fileID: 472862624}
   - component: {fileID: 472862625}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1173,7 +1173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 484846033}
   - component: {fileID: 484846034}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1411,7 +1411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 536658590}
   - component: {fileID: 536658591}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1582,7 +1582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 648098097}
   - component: {fileID: 648098098}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1669,7 +1669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 716735147}
   - component: {fileID: 716735148}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1756,7 +1756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 864544113}
   - component: {fileID: 864544114}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1843,7 +1843,7 @@ GameObject:
   m_Component:
   - component: {fileID: 939941604}
   - component: {fileID: 939941605}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1930,7 +1930,7 @@ GameObject:
   m_Component:
   - component: {fileID: 953641412}
   - component: {fileID: 953641413}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2017,7 +2017,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1052769402}
   - component: {fileID: 1052769403}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2104,7 +2104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1178326157}
   - component: {fileID: 1178326158}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2191,7 +2191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1234402797}
   - component: {fileID: 1234402798}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2278,7 +2278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1275950038}
   - component: {fileID: 1275950039}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2365,7 +2365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1293337550}
   - component: {fileID: 1293337551}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2452,7 +2452,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1428524720}
   - component: {fileID: 1428524721}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2539,7 +2539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1441939420}
   - component: {fileID: 1441939421}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2626,7 +2626,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1585957535}
   - component: {fileID: 1585957536}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2713,7 +2713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1605433458}
   - component: {fileID: 1605433459}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2800,7 +2800,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1778086915}
   - component: {fileID: 1778086914}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2841,7 +2841,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.25851345, y: -4.02298}
+  m_Offset: {x: 0.2340908, y: -4.0338745}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2851,7 +2851,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 18.275316, y: 2.2226868}
+  m_Size: {x: 18.22647, y: 2.039643}
   m_EdgeRadius: 0
 --- !u!4 &1778086915
 Transform:
@@ -2862,7 +2862,7 @@ Transform:
   m_GameObject: {fileID: 1778086913}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2904,6 +2904,37 @@ Transform:
   - {fileID: 1573662}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1825272918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1825272919}
+  m_Layer: 0
+  m_Name: Groundcheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1825272919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825272918}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1897374839}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1826701509
 GameObject:
   m_ObjectHideFlags: 0
@@ -2914,7 +2945,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1826701510}
   - component: {fileID: 1826701511}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3004,6 +3035,7 @@ GameObject:
   - component: {fileID: 1897374837}
   - component: {fileID: 1897374836}
   - component: {fileID: 1897374840}
+  - component: {fileID: 1897374841}
   m_Layer: 0
   m_Name: Mario
   m_TagString: Untagged
@@ -3063,7 +3095,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -3139,10 +3171,11 @@ Transform:
   m_GameObject: {fileID: 1897374835}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.6044917, y: -2.39, z: 0}
+  m_LocalPosition: {x: -4.62, y: -2.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1825272919}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1897374840
@@ -3158,6 +3191,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  runMultiplier: 1.7
+  doubleTapWindow: 0.25
+  runGrace: 0.2
+  jumpForce: 15
+  groundCheck: {fileID: 1825272919}
+  groundCheckRadius: 0.15
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  lowJumpCut: 0.5
+--- !u!95 &1897374841
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897374835}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5df7ef509a1fe8547ad6b68b9563d43f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 1
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1931272190
 GameObject:
   m_ObjectHideFlags: 0
@@ -3168,7 +3233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1931272191}
   - component: {fileID: 1931272192}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3255,7 +3320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1942427895}
   - component: {fileID: 1942427896}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3342,7 +3407,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1952867938}
   - component: {fileID: 1952867939}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3429,7 +3494,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1986465177}
   - component: {fileID: 1986465178}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3516,7 +3581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2082256319}
   - component: {fileID: 2082256320}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3603,7 +3668,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2132046573}
   - component: {fileID: 2132046574}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3690,7 +3755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2134645005}
   - component: {fileID: 2134645006}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terra (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -13,7 +13,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float doubleTapWindow = 0.25f; // tempo máximo entre toques
     [SerializeField] private float runGrace = 0.2f;         // quanto tempo mantém corrida sem input
 
-    private float lastLeftTapTime  = -10f;
+ Animator aniPlayer;
+
+    private float lastLeftTapTime = -10f;
     private float lastRightTapTime = -10f;
     private bool running = false;
     private int runDir = 0; // -1 esquerda, +1 direita
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        aniPlayer = GetComponent<Animator>();
         rbPlayer = GetComponent<Rigidbody2D>();
     }
 
@@ -40,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
         // ----- Jump input -----
         if (Input.GetButtonDown("Jump")) jumpPressed = true;
         jumpHeld = Input.GetButton("Jump");
+
+aniPlayer.SetBool("Jump", !Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer)); 
 
         // ----- Double-tap detection -----
         // esquerda
@@ -104,6 +109,8 @@ public class PlayerMovement : MonoBehaviour
     {
         float xMove = Input.GetAxis("Horizontal");
         float currentSpeed = speed;
+
+        aniPlayer.SetFloat("Speed", Mathf.Abs(xMove * currentSpeed));   
 
         // aplicar corrida se direção bate com o input atual
         if (running && Mathf.Sign(xMove) == runDir && xMove != 0f)
