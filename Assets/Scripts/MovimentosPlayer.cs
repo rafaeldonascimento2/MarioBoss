@@ -1,130 +1,113 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // --- Refs ---
-    private Rigidbody2D rbPlayer;
+    Rigidbody2D rbPlayer;
+    [SerializeField] float speed = 5f;
 
-    [Header("Move")]
-    [SerializeField] private float speed = 5f;
+    [SerializeField] float jumpForce = 15f;
+    [SerializeField] bool isJump;
+    [SerializeField] bool inFloor = true;
+    [SerializeField] Transform groundCheck;
+    [SerializeField] LayerMask groundLayer;
 
-    [Header("Run (Double-Tap)")]
-    [SerializeField] private float runMultiplier = 1.7f;   // velocidade extra ao correr
-    [SerializeField] private float doubleTapWindow = 0.25f; // tempo máximo entre toques
-    [SerializeField] private float runGrace = 0.2f;         // quanto tempo mantém corrida sem input
+    Animator animPlayer;
 
- Animator aniPlayer;
-
-    private float lastLeftTapTime = -10f;
-    private float lastRightTapTime = -10f;
-    private bool running = false;
-    private int runDir = 0; // -1 esquerda, +1 direita
-    private float runTimer = 0f;
-
-    [Header("Jump")]
-    [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private float groundCheckRadius = 0.15f;
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private float lowJumpCut = 0.4f; // <1 corta a subida ao soltar
-
-    private bool jumpPressed;
-    private bool jumpHeld;
+    [SerializeField] bool dead = false;
+    CapsuleCollider2D playerCollider;
 
     private void Awake()
     {
-        aniPlayer = GetComponent<Animator>();
+        animPlayer = GetComponent<Animator>();
         rbPlayer = GetComponent<Rigidbody2D>();
+        playerCollider = GetComponent<CapsuleCollider2D>();
+    }
+
+    private void Start()
+    {
+        dead = false;
     }
 
     private void Update()
     {
-        // ----- Jump -----
-        if (Input.GetButtonDown("Jump")) jumpPressed = true;
-        jumpHeld = Input.GetButton("Jump");
+        if (dead) return;
 
-aniPlayer.SetBool("Jump", !Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer)); 
+        inFloor = Physics2D.Linecast(transform.position, groundCheck.position, groundLayer);
+        Debug.DrawLine(transform.position, groundCheck.position, Color.blue);
 
-        // ----- Double-tap -----
-        // esquerda
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        animPlayer.SetBool("Jump", !inFloor);
+
+        if (Input.GetButtonDown("Jump") && inFloor)
         {
-            if (Time.time - lastLeftTapTime <= doubleTapWindow)
-            {
-                running = true;
-                runDir = -1;
-                runTimer = runGrace;
-            }
-            lastLeftTapTime = Time.time;
+            isJump = true;
         }
-        // direita
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetButtonUp("Jump") && rbPlayer.linearVelocity.y > 0)
         {
-            if (Time.time - lastRightTapTime <= doubleTapWindow)
-            {
-                running = true;
-                runDir = +1;
-                runTimer = runGrace;
-            }
-            lastRightTapTime = Time.time;
+            rbPlayer.linearVelocity = new Vector2(rbPlayer.linearVelocity.x, rbPlayer.linearVelocity.y * 0.5f);
         }
-
-        // se não houver input contínuo na direção da corrida, deixa um "gracetime"
-        float xRaw = Mathf.Sign(Input.GetAxisRaw("Horizontal"));
-        if (xRaw == runDir && xRaw != 0)
-            runTimer = runGrace;
-        else
-            runTimer -= Time.deltaTime;
-
-        if (runTimer <= 0f) running = false;
     }
 
     private void FixedUpdate()
     {
-        // chão
-        bool isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-
-        // pulo
-        if (jumpPressed && isGrounded)
-        {
-            var v = rbPlayer.linearVelocity; 
-            v.y = jumpForce;
-            rbPlayer.linearVelocity = v;
-        }
-
-        // para de subir se soltar o botão
-        if (!jumpHeld && rbPlayer.linearVelocity.y > 0f)
-        {
-            rbPlayer.linearVelocity = new Vector2(rbPlayer.linearVelocity.x, rbPlayer.linearVelocity.y * lowJumpCut);
-        }
-
-        // movimento
         Move();
-
-        jumpPressed = false;
+        JumpPlayer();
     }
 
-    private void Move()
+    void Move()
     {
+        if (dead) return;
+
         float xMove = Input.GetAxis("Horizontal");
-        float currentSpeed = speed;
+        rbPlayer.linearVelocity = new Vector2(xMove * speed, rbPlayer.linearVelocity.y);
 
-        aniPlayer.SetFloat("Speed", Mathf.Abs(xMove * currentSpeed));   
+        animPlayer.SetFloat("Speed", Mathf.Abs(xMove));
 
-        // corrida
-        if (running && Mathf.Sign(xMove) == runDir && xMove != 0f)
-            currentSpeed *= runMultiplier;
-
-        rbPlayer.linearVelocity = new Vector2(xMove * currentSpeed, rbPlayer.linearVelocity.y);
-
-        if (xMove > 0)       transform.eulerAngles = new Vector3(0, 0, 0);
-        else if (xMove < 0)  transform.eulerAngles = new Vector3(0, 180, 0);
+        if (xMove > 0)
+        {
+            transform.eulerAngles = new Vector2(0, 0);
+        }
+        else if (xMove < 0)
+        {
+            transform.eulerAngles = new Vector2(0, 180);
+        }
     }
 
-    private void OnDrawGizmosSelected()
+    void JumpPlayer()
     {
-        if (groundCheck == null) return;
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        if (dead) return;
+
+        if (isJump)
+        {
+            rbPlayer.linearVelocity = Vector2.up * jumpForce;
+            isJump = false;
+        }
+    }
+
+    public void Death()
+    {
+        StartCoroutine(DeathCorotine());
+    }
+
+    IEnumerator DeathCorotine()
+    {
+        if (!dead)
+        {
+            dead = true;
+            animPlayer.SetTrigger("Death");
+            yield return new WaitForSeconds(0.5f);
+
+            rbPlayer.linearVelocity = Vector2.zero;
+            rbPlayer.AddForce(Vector2.up * 15f, ForceMode2D.Impulse);
+            playerCollider.isTrigger = true;
+
+            Invoke("RestartGame", 2.5f);
+        }
+    }
+
+    void RestartGame()
+    {
+        SceneManager.LoadScene("Fase1");
     }
 }
