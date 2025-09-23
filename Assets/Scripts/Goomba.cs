@@ -63,6 +63,9 @@ public class Goomba : MonoBehaviour
             speed = 0f;
             if (colliderGoomba) colliderGoomba.enabled = false;
 
+            // AQUI: soma 1 ponto ao placar
+            GameManager.instance.AddScore(1);
+
             Destroy(gameObject, 0.3f);
         }
         else
