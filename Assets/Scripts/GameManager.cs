@@ -1,11 +1,12 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public int score = 0;
-    public Text scoreText;
+    public int score = 0; // pontos
+    public int totalEnemies = 10; // total
+    public TextMeshProUGUI scoreText;
 
     void Awake()
     {
@@ -19,9 +20,14 @@ public class GameManager : MonoBehaviour
         UpdateScoreUI();
     }
 
+    void Start()
+    {
+        UpdateScoreUI();
+    }
+
     void UpdateScoreUI()
     {
         if (scoreText != null)
-            scoreText.text = score.ToString("00"); // add a dezena
+            scoreText.text = score.ToString("00") + "/" + totalEnemies.ToString("00");
     }
 }
