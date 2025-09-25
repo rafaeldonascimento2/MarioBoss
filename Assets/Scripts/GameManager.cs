@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public bool venceu = false;
     public bool perdeu = false;
-    public int estrelas = 0;
 
     void Awake()
     {
@@ -40,23 +39,29 @@ public class GameManager : MonoBehaviour
         if (score < 5)
         {
             perdeu = true;
+            PlayerPrefs.SetInt("Perdeu", 1); // salva que perdeu
+            PlayerPrefs.Save();
+
             SceneManager.LoadScene("Inicio"); // tela inicial = game over
         }
         else
         {
             venceu = true;
-            CalcularEstrelas();
             SceneManager.LoadScene("Vitoria");
         }
     }
-    void CalcularEstrelas()
+
+    public void VoltarParaInicio(float delay = 0f)
     {
-        if (score >= 10)
-            estrelas = 3;
-        else if (score >= 7)
-            estrelas = 2;
+        if (delay > 0)
+            Invoke("CarregarInicio", delay);
         else
-            estrelas = 1;
+            CarregarInicio();
+    }
+
+    private void CarregarInicio()
+    {
+        SceneManager.LoadScene("Inicio");
     }
 
     public void Resetar()
@@ -64,7 +69,6 @@ public class GameManager : MonoBehaviour
         score = 0;
         venceu = false;
         perdeu = false;
-        estrelas = 0;
     }
 
     

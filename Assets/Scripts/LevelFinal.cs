@@ -15,12 +15,6 @@ public class LevelFinal : MonoBehaviour
         }
         else
         {
-            // conta os pontos
-            int estrelas = 1;
-            if (pontos >= 10) estrelas = 3;
-            else if (pontos >= 7) estrelas = 2;
-
-            PlayerPrefs.SetInt("Estrelas", estrelas);
             PlayerPrefs.SetInt("Pontos", pontos);    
 
             SceneManager.LoadScene("Vitoria");
