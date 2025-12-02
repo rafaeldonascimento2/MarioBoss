@@ -1,86 +1,140 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public int score = 0; // score
-    public int totalEnemies = 10; // total
+
+    [Header("Vidas")]
+    public int vidasMax = 3;
+    public int vidas; // vai ser carregada do PlayerPrefs
+    public TextMeshProUGUI vidasText;
+
+    [Header("Placar")]
+    public int score = 0;
+    public int killsPorVida = 5;
     public TextMeshProUGUI scoreText;
+
+    [Header("Estados")]
     public bool venceu = false;
     public bool perdeu = false;
 
     void Awake()
     {
-        if (instance == null) instance = this;
-        else Destroy(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject); // persiste entre as cenas
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void Start()
+    {
+        // Carrega vidas salvas ou inicia com o máximo
+        vidas = PlayerPrefs.GetInt("Vidas", vidasMax);
+        AtualizarUI();
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene cena, LoadSceneMode modo)
+    {
+        // tenta achar textos de novo quando uma cena é carregada
+        if (scoreText == null)
+            scoreText = GameObject.FindWithTag("ScoreText")?.GetComponent<TextMeshProUGUI>();
+
+        if (vidasText == null)
+            vidasText = GameObject.FindWithTag("VidasText")?.GetComponent<TextMeshProUGUI>();
+
+        AtualizarUI();
     }
 
     public void AddScore(int amount)
     {
         score += amount;
-        UpdateScoreUI();
+        AtualizarUI();
     }
 
-    void Start()
-    {
-        UpdateScoreUI();
-    }
-
-    void UpdateScoreUI()
+    void AtualizarUI()
     {
         if (scoreText != null)
-            scoreText.text = score.ToString("00") + "/" + totalEnemies.ToString("00");
+            scoreText.text = score.ToString("00") + "/" + killsPorVida.ToString("00");
+
+        if (vidasText != null)
+            vidasText.text = "x " + vidas.ToString();
     }
 
-    public void ChecarFimDeJogo()
+    public void PlayerMorreu()
     {
-        if (score < 5)
+        vidas--;
+        PlayerPrefs.SetInt("Vidas", vidas);
+        PlayerPrefs.Save();
+
+        if (vidas <= 0)
         {
             perdeu = true;
-            PlayerPrefs.SetInt("Perdeu", 1); // salva que perdeu
-            PlayerPrefs.Save();
+            SceneManager.LoadScene("Derrota");
+            return;
+        }
 
-            SceneManager.LoadScene("Inicio"); // tela inicial = game over
+        // ainda tem vida: reinicia fase
+        score = 0;
+        SceneManager.LoadScene("Fase1");
+    }
+
+
+    public void FimDaFaseAlcancado()
+    {
+        if (score >= killsPorVida)
+        {
+            VencerFase();
         }
         else
         {
-            venceu = true;
-            SceneManager.LoadScene("Vitoria");
+            PlayerMorreu();
         }
     }
 
-    public void VoltarParaInicio(float delay = 0f)
+
+    public void VencerFase()
     {
-        if (delay > 0)
-            Invoke("CarregarInicio", delay);
-        else
-            CarregarInicio();
+        venceu = true;
+        PlayerPrefs.SetInt("VidasRestantes", vidas);
+        PlayerPrefs.Save();
+
+        SceneManager.LoadScene("Vitoria");
     }
 
-    private void CarregarInicio()
+
+    public int CalcularEstrelas()
     {
-        SceneManager.LoadScene("Inicio");
+        if (vidas == 3) return 3;
+        if (vidas == 2) return 2;
+        if (vidas == 1) return 1;
+        return 0;
     }
 
-    public void Resetar()
+    // Chama isso quando voltar para o menu e quiser resetar tudo
+    public void ResetarJogo()
     {
+        vidas = vidasMax;
         score = 0;
         venceu = false;
         perdeu = false;
-    }
 
-    
-}
+        PlayerPrefs.SetInt("Vidas", vidas);
+        PlayerPrefs.Save();
 
-public class FimDaFase : MonoBehaviour
-{
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            GameManager.instance.ChecarVitoria();
-        }
+        SceneManager.LoadScene("Inicio");
     }
 }

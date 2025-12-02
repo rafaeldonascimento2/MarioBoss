@@ -1,5 +1,4 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class LevelFinal : MonoBehaviour
 {
@@ -8,17 +7,18 @@ public class LevelFinal : MonoBehaviour
         if (!other.CompareTag("Player")) return;
 
         int pontos = GameManager.instance.score;
+        int minKills = GameManager.instance.killsPorVida; 
 
-        if (pontos < 5)
+
+        if (pontos < minKills)
         {
-            SceneManager.LoadScene("Inicio");
+            // Não matou o suficiente → perde 1 vida e recomeça
+            GameManager.instance.PlayerMorreu();
         }
         else
         {
-            PlayerPrefs.SetInt("Pontos", pontos);    
-
-            SceneManager.LoadScene("Vitoria");
+            // Matou o suficiente → vitória
+            GameManager.instance.VencerFase();
         }
     }
 }
-

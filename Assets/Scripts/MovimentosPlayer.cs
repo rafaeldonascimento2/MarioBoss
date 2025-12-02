@@ -102,12 +102,9 @@ public class PlayerMovement : MonoBehaviour
             rbPlayer.AddForce(Vector2.up * 15f, ForceMode2D.Impulse);
             playerCollider.isTrigger = true;
 
-            Invoke("RestartGame", 2.5f);
+            GameManager.instance.PlayerMorreu();
         }
     }
 
-    void RestartGame()
-    {
-        SceneManager.LoadScene("Fase1");
-    }
+
 }
