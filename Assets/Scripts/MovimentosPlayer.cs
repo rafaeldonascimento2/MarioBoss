@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,22 +14,17 @@ public class PlayerMovement : MonoBehaviour
 
     Animator animPlayer;
 
-    [SerializeField] bool dead = false;
+    bool dead = false;
     CapsuleCollider2D playerCollider;
 
-    private void Awake()
+    void Awake()
     {
         animPlayer = GetComponent<Animator>();
         rbPlayer = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<CapsuleCollider2D>();
     }
 
-    private void Start()
-    {
-        dead = false;
-    }
-
-    private void Update()
+    void Update()
     {
         if (dead) return;
 
@@ -45,11 +39,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetButtonUp("Jump") && rbPlayer.linearVelocity.y > 0)
         {
-            rbPlayer.linearVelocity = new Vector2(rbPlayer.linearVelocity.x, rbPlayer.linearVelocity.y * 0.5f);
+            rbPlayer.linearVelocity =
+                new Vector2(rbPlayer.linearVelocity.x, rbPlayer.linearVelocity.y * 0.5f);
         }
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         Move();
         JumpPlayer();
@@ -65,13 +60,9 @@ public class PlayerMovement : MonoBehaviour
         animPlayer.SetFloat("Speed", Mathf.Abs(xMove));
 
         if (xMove > 0)
-        {
             transform.eulerAngles = new Vector2(0, 0);
-        }
         else if (xMove < 0)
-        {
             transform.eulerAngles = new Vector2(0, 180);
-        }
     }
 
     void JumpPlayer()
@@ -85,29 +76,31 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // =================== MORTE =====================
+
     public void Death()
     {
-        StartCoroutine(DeathCorotine());
+        if (dead) return;
+        StartCoroutine(DeathCoroutine());
     }
 
-    IEnumerator DeathCorotine()
+    IEnumerator DeathCoroutine()
     {
-        if (!dead)
-        {
-            dead = true;
-            animPlayer.SetTrigger("Death");
-            yield return new WaitForSeconds(0.5f);
+        if (dead) yield break;
 
-            rbPlayer.linearVelocity = Vector2.zero;
-            rbPlayer.AddForce(Vector2.up * 15f, ForceMode2D.Impulse);
-            playerCollider.isTrigger = true;
+        dead = true;
+        animPlayer.SetTrigger("Death");
+        yield return new WaitForSeconds(0.5f);
 
-            Invoke("RestartGame", 2.5f);
-        }
+        rbPlayer.linearVelocity = Vector2.zero;
+        rbPlayer.AddForce(Vector2.up * 15f, ForceMode2D.Impulse);
+        playerCollider.isTrigger = true;
+
+        Invoke(nameof(RestartGame), 2.5f);
     }
 
     void RestartGame()
     {
-        SceneManager.LoadScene("Fase1");
+        GameManager.instance.PerderVida();
     }
 }

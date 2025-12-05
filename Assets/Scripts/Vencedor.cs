@@ -1,17 +1,15 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.SceneManagement;
 
 public class Vencedor : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText;
+    void Start()
+    {
+        Invoke(nameof(Voltar), 3f);
+    }
 
-    public float delayAntesDeVoltar = 3f;
-
-        void Start()
-        {
-            GameManager.instance.VoltarParaInicio(3f); // espera 3 segundos
-        }
-
-
+    void Voltar()
+    {
+        SceneManager.LoadScene("Inicio");
+    }
 }
