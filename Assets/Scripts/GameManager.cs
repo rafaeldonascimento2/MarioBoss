@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public int score;
 
     TextMeshProUGUI vidasText;
-    TextMeshProUGUI scoreText;
+    TextMeshProUGUI pontosText;
 
     void Awake()
     {
@@ -58,22 +58,36 @@ public class GameManager : MonoBehaviour
         }
 
         // Procura Texts na cena atual pelo NOME
-        var scoreObj = GameObject.Find("ScoreText");
-        scoreText = scoreObj ? scoreObj.GetComponent<TextMeshProUGUI>() : null;
+    void OnSceneLoaded(Scene cena, LoadSceneMode modo)
+    {
+        // Quando volta para a tela inicial, zera o jogo
+        if (cena.name == "Inicio")
+        {
+            vidas = vidasMax;
+            score = 0;
+        }
 
-        var vidasObj = GameObject.Find("VidasText");
+        // Procura Texts na cena atual pelo NOME
+        var scoreObj = GameObject.Find("pontosText");
+        pontosText = scoreObj ? scoreObj.GetComponent<TextMeshProUGUI>() : null;
+
+        var vidasObj = GameObject.Find("vidasText");
         vidasText = vidasObj ? vidasObj.GetComponent<TextMeshProUGUI>() : null;
+
+        AtualizaUI();
+    }
+
 
         AtualizaUI();
     }
 
     void AtualizaUI()
     {
-        if (scoreText)
-            scoreText.text = score.ToString("00") + "/" + totalEnemies.ToString("00");
+        if (pontosText)
+            pontosText.text = score.ToString("00") + "/" + totalEnemies.ToString("00");
 
         if (vidasText)
-            vidasText.text = "Vidas: " + vidas.ToString();
+            vidasText.text = vidas.ToString("00") + "/" + vidasMax.ToString("00");
     }
 
     // ========= SCORE =========
@@ -96,7 +110,7 @@ public class GameManager : MonoBehaviour
         if (vidas <= 0)
         {
             // Derrota final
-            SceneManager.LoadScene("Derrota");
+            // SceneManager.LoadScene("Derrota");
         }
         else
         {
@@ -126,7 +140,7 @@ public class GameManager : MonoBehaviour
 
     if (vidas <= 0)
     {
-        SceneManager.LoadScene("Derrota");
+        // SceneManager.LoadScene("Derrota");
         return;
     }
 

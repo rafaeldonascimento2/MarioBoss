@@ -18056,7 +18056,7 @@ GameObject:
   - component: {fileID: 949875241}
   - component: {fileID: 949875240}
   m_Layer: 5
-  m_Name: pontos
+  m_Name: pontosText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39235,7 +39235,7 @@ GameObject:
   - component: {fileID: 1977484928}
   - component: {fileID: 1977484927}
   m_Layer: 5
-  m_Name: vidas
+  m_Name: vidasText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
