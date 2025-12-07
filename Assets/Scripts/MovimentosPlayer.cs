@@ -85,22 +85,38 @@ public class PlayerMovement : MonoBehaviour
     }
 
     IEnumerator DeathCoroutine()
+{
+    dead = true;
+
+    // 1. Congela a FÍSICA da cena
+    Time.timeScale = 0f;
+
+    // 2. Piscar o player
+    SpriteRenderer sr = GetComponent<SpriteRenderer>();
+    float tempo = 1f;
+    float timer = 0f;
+
+    while (timer < tempo)
     {
-        if (dead) yield break;
-
-        dead = true;
-        animPlayer.SetTrigger("Death");
-        yield return new WaitForSeconds(0.5f);
-
-        rbPlayer.linearVelocity = Vector2.zero;
-        rbPlayer.AddForce(Vector2.up * 15f, ForceMode2D.Impulse);
-        playerCollider.isTrigger = true;
-
-        Invoke(nameof(RestartGame), 2.5f);
+        sr.enabled = !sr.enabled;
+        timer += 0.1f;
+        yield return new WaitForSecondsRealtime(0.1f);
     }
 
-    void RestartGame()
-    {
-        GameManager.instance.PerderVida();
-    }
+    // Garante que o sprite volte
+    sr.enabled = true;
+
+    // 3. Reduz vida (sem reiniciar fase)
+    GameManager.instance.PerderVidaSemResetarCena();
+
+    // 4. Resetar estado do player
+    dead = false;
+    playerCollider.isTrigger = false;
+
+    // 5. Restaurar física
+    Time.timeScale = 1f;
+
+    yield break;
+}
+
 }

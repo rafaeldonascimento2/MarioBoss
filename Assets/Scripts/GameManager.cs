@@ -119,4 +119,18 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Vitoria");
         }
     }
+
+    public void PerderVidaSemResetarCena()
+{
+    vidas--;
+
+    if (vidas <= 0)
+    {
+        SceneManager.LoadScene("Derrota");
+        return;
+    }
+
+    AtualizaUI();
+}
+
 }
