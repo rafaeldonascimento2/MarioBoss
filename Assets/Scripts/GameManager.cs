@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
 
         void Start()
     {
-        AtualizaUI();
     }
 
 
@@ -64,14 +63,19 @@ public class GameManager : MonoBehaviour
         var vidasObj = GameObject.Find("vidasText");
         vidasText = vidasObj ? vidasObj.GetComponent<TextMeshProUGUI>() : null;
 
-        AtualizaUI();
+        AtualizaPontosUI();
+        AtualizaVidaUI();
     }
 
-    void AtualizaUI()
+    void AtualizaPontosUI()
     {
         if (pontosText)
             pontosText.text = score.ToString("00") + "/" + totalEnemies.ToString("00");
+        
+    }
 
+    void AtualizaVidaUI()
+    {
         if (vidasText)
             vidasText.text = vidas.ToString("00") + "/" + vidasMax.ToString("00");
     }
@@ -80,7 +84,7 @@ public class GameManager : MonoBehaviour
     public void AddScore(int amount)
     {
         score += amount;
-        AtualizaUI();
+        AtualizaPontosUI();
     }
 
     // ========= VIDAS =========
@@ -91,7 +95,7 @@ public class GameManager : MonoBehaviour
         if (vidas < 0)
             vidas = 0;
 
-        AtualizaUI();
+        AtualizaVidaUI();
 
         if (vidas <= 0)
         {
@@ -110,11 +114,15 @@ public class GameManager : MonoBehaviour
     {
         if (score < 5)
         {
+
             // Não fez pontos suficientes → perde vida
             PerderVida();
         }
         else
         {
+            Debug.Log("Chamando Vitoria com VIDAS = " + vidas);
+            PlayerPrefs.SetInt("vidasVitoria", vidas);
+            PlayerPrefs.Save();
             // Vitória
             SceneManager.LoadSceneAsync("Vitoria");
         }
@@ -130,7 +138,7 @@ public class GameManager : MonoBehaviour
         return;
     }
 
-    AtualizaUI();
+    AtualizaVidaUI();
 }
 
 }
