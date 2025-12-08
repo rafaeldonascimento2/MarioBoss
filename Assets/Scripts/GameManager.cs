@@ -47,21 +47,11 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    // Chamado toda vez que uma cena é carregada
+    // Procura Texts na cena atual pelo NOME
     void OnSceneLoaded(Scene cena, LoadSceneMode modo)
     {
         // Quando volta para a tela inicial, zera o jogo
-        if (cena.name == "Inicio")
-        {
-            vidas = vidasMax;
-            score = 0;
-        }
-
-        // Procura Texts na cena atual pelo NOME
-    void OnSceneLoaded(Scene cena, LoadSceneMode modo)
-    {
-        // Quando volta para a tela inicial, zera o jogo
-        if (cena.name == "Inicio")
+        if (cena.name == "Fase1")
         {
             vidas = vidasMax;
             score = 0;
@@ -73,10 +63,6 @@ public class GameManager : MonoBehaviour
 
         var vidasObj = GameObject.Find("vidasText");
         vidasText = vidasObj ? vidasObj.GetComponent<TextMeshProUGUI>() : null;
-
-        AtualizaUI();
-    }
-
 
         AtualizaUI();
     }
@@ -110,7 +96,7 @@ public class GameManager : MonoBehaviour
         if (vidas <= 0)
         {
             // Derrota final
-            // SceneManager.LoadScene("Derrota");
+            SceneManager.LoadScene("Derrota");
         }
         else
         {
@@ -140,7 +126,7 @@ public class GameManager : MonoBehaviour
 
     if (vidas <= 0)
     {
-        // SceneManager.LoadScene("Derrota");
+        SceneManager.LoadScene("Derrota");
         return;
     }
 
