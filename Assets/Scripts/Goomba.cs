@@ -61,10 +61,14 @@ public class Goomba : MonoBehaviour
 
             Destroy(gameObject, 0.3f);
         }
-        else
-        {
-            var player = other.GetComponent<PlayerMovement>();
-            if (player != null) player.Death();
-        }
+     else
+{
+    var vida = other.GetComponent<VidaPlayer>();
+    if (vida != null)
+    {
+        vida.TomarDano();
+    }
+}
+
     }
 }
