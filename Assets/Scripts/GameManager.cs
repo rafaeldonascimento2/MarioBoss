@@ -22,14 +22,14 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);   // fica vivo entre as cenas
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject);
-            return;
+            Destroy(gameObject, 0.05f);
         }
     }
+
 
         void Start()
     {
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     void OnSceneLoaded(Scene cena, LoadSceneMode modo)
     {
         // Quando volta para a tela inicial, zera o jogo
-        if (cena.name == "Fase1")
+        if (cena.name == "Inicio")
         {
             vidas = vidasMax;
             score = 0;
@@ -96,12 +96,12 @@ public class GameManager : MonoBehaviour
         if (vidas <= 0)
         {
             // Derrota final
-            SceneManager.LoadScene("Derrota");
+            SceneManager.LoadSceneAsync("Derrota");
         }
         else
         {
             // Perdeu 1 vida, volta para a fase
-            SceneManager.LoadScene("Fase1");
+            SceneManager.LoadSceneAsync("Fase1");
         }
     }
 
@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
         else
         {
             // Vitória
-            SceneManager.LoadScene("Vitoria");
+            SceneManager.LoadSceneAsync("Vitoria");
         }
     }
 
@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
 
     if (vidas <= 0)
     {
-        SceneManager.LoadScene("Derrota");
+        SceneManager.LoadSceneAsync("Derrota");
         return;
     }
 

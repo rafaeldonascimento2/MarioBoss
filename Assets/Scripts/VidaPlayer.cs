@@ -35,9 +35,13 @@ public class VidaPlayer : MonoBehaviour
 
         if (vidas <= 0)
         {
+            // impede qualquer trigger ou colisão extra
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<Rigidbody2D>().simulated = false;
             movimentos.Death();
             return;
         }
+
 
         StartCoroutine(Invencibilidade());
     }
@@ -63,4 +67,6 @@ public class VidaPlayer : MonoBehaviour
         sprite.enabled = true;
         invencivel = false;
     }
+
+
 }

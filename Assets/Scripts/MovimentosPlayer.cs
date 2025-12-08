@@ -82,41 +82,37 @@ public class PlayerMovement : MonoBehaviour
     {
         if (dead) return;
         StartCoroutine(DeathCoroutine());
+        Debug.Log("MORREU");
     }
 
     IEnumerator DeathCoroutine()
-{
-    dead = true;
-
-    // 1. Congela a FÍSICA da cena
-    Time.timeScale = 0f;
-
-    // 2. Piscar o player
-    SpriteRenderer sr = GetComponent<SpriteRenderer>();
-    float tempo = 1f;
-    float timer = 0f;
-
-    while (timer < tempo)
     {
-        sr.enabled = !sr.enabled;
-        timer += 0.1f;
-        yield return new WaitForSecondsRealtime(0.1f);
+        dead = true;
+
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        float tempo = 1f;
+        float timer = 0f;
+
+        while (timer < tempo)
+        {
+            sr.enabled = !sr.enabled;
+            timer += 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        sr.enabled = true;
+
+        // Desativa física
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().simulated = false;
+
+        // Chama o GameManager
+        GameManager.instance.PerderVida();
+
+        Destroy(gameObject);
+
+        yield break;
     }
 
-    // Garante que o sprite volte
-    sr.enabled = true;
-
-    // 3. Reduz vida (sem reiniciar fase)
-    GameManager.instance.PerderVidaSemResetarCena();
-
-    // 4. Resetar estado do player
-    dead = false;
-    playerCollider.isTrigger = false;
-
-    // 5. Restaurar física
-    Time.timeScale = 1f;
-
-    yield break;
-}
 
 }

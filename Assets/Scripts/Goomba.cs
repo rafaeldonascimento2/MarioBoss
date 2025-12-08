@@ -16,6 +16,7 @@ public class Goomba : MonoBehaviour
     Animator aniGoomba;
     BoxCollider2D colliderGoomba;
 
+
     void Awake()
     {
         rbGoomba = GetComponent<Rigidbody2D>();
@@ -39,10 +40,17 @@ public class Goomba : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other == null || other.gameObject == null) return;
         if (!other.CompareTag("Player")) return;
 
         Rigidbody2D rbPlayer = other.GetComponent<Rigidbody2D>();
         if (rbPlayer == null) return;
+
+        VidaPlayer vidaPlayer = other.GetComponent<VidaPlayer>();
+        if (vidaPlayer == null) return;
+
+        // Se o player já morreu, não faz mais nada
+        if (vidaPlayer.vidas <= 0) return;
 
         bool isStomp =
             rbPlayer.linearVelocity.y <= 0f &&
@@ -61,14 +69,10 @@ public class Goomba : MonoBehaviour
 
             Destroy(gameObject, 0.3f);
         }
-     else
-{
-    var vida = other.GetComponent<VidaPlayer>();
-    if (vida != null)
-    {
-        vida.TomarDano();
+        else
+        {
+            vidaPlayer.TomarDano();   // <-- corrigido
+        }
     }
-}
 
-    }
 }

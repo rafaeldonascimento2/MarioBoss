@@ -2,17 +2,21 @@ using UnityEngine;
 
 public class Movecamera : MonoBehaviour
 {
-       public GameObject objeto;
+    public GameObject objeto;
     private Vector3 offset;
 
     void Start()
     {
-        // calcula a distância inicial entre a câmera e o objeto
-        offset = transform.position - objeto.transform.position;
+        // Se o objeto não existir ao iniciar, evita erro
+        if (objeto != null)
+            offset = transform.position - objeto.transform.position;
     }
 
     void LateUpdate()
     {
+        // SE O OBJETO MORREU, NÃO FAZ MAIS NADA
+        if (objeto == null) return;
+
         // mantém a câmera seguindo o objeto
         Vector3 novaPosicao = objeto.transform.position + offset;
 
