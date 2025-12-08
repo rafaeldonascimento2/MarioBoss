@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Vencedor : MonoBehaviour
 {
@@ -7,16 +8,20 @@ public class Vencedor : MonoBehaviour
     void Start()
     {
         int estrelasGanhas = PlayerPrefs.GetInt("estrelasVitoria", 0);
-
-        Debug.Log("Estrelas recebidas: " + estrelasGanhas);
-
-        // Garante que o número não passe do tamanho do array
         estrelasGanhas = Mathf.Clamp(estrelasGanhas, 0, estrelas.Length);
 
-        // Liga apenas a quantidade correta de estrelas
+        // quantidade de estrelas
         for (int i = 0; i < estrelas.Length; i++)
         {
             estrelas[i].SetActive(i < estrelasGanhas);
         }
+          StartCoroutine(VoltarParaInicio());
+    }
+
+    private System.Collections.IEnumerator VoltarParaInicio()
+    {
+        yield return new WaitForSeconds(5f);
+        Destroy(GameManager.instance.gameObject);
+        SceneManager.LoadScene("Inicio");
     }
 }
