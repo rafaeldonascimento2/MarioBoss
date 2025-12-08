@@ -35,6 +35,13 @@ public class GameManager : MonoBehaviour
     {
     }
 
+    int CalcularEstrelas(int score)
+    {
+        if (score <= 6) return 1;
+        if (score <= 8) return 2;
+        return 3;
+    }
+
 
     void OnEnable()
     {
@@ -110,22 +117,22 @@ public class GameManager : MonoBehaviour
     }
 
     // ========= FINAL DA FASE =========
-    public void FinalDaFase()
+   public void FinalDaFase()
     {
         if (score < 5)
         {
+            // derrota
+            SceneManager.LoadScene("Derrota");
+            return;
+        }
 
-            // Não fez pontos suficientes → perde vida
-            PerderVida();
-        }
-        else
-        {
-            Debug.Log("Chamando Vitoria com VIDAS = " + vidas);
-            PlayerPrefs.SetInt("vidasVitoria", vidas);
-            PlayerPrefs.Save();
-            // Vitória
-            SceneManager.LoadSceneAsync("Vitoria");
-        }
+        int estrelas = CalcularEstrelas(score);
+        PlayerPrefs.SetInt("estrelasVitoria", estrelas);
+        PlayerPrefs.Save();
+
+        Debug.Log("Venceu com SCORE = " + score + " → estrelas = " + estrelas);
+
+        SceneManager.LoadScene("Vitoria");
     }
 
     public void PerderVidaSemResetarCena()

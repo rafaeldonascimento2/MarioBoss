@@ -3,15 +3,20 @@ using UnityEngine;
 public class Vencedor : MonoBehaviour
 {
     public GameObject[] estrelas;
+
     void Start()
     {
-        int vidas = PlayerPrefs.GetInt("vidasVitoria", 0);
-        Debug.Log("Vidas recebidas na VictoryScreen: " + vidas);
+        int estrelasGanhas = PlayerPrefs.GetInt("estrelasVitoria", 0);
 
-        vidas = Mathf.Clamp(vidas, 0, estrelas.Length);
+        Debug.Log("Estrelas recebidas: " + estrelasGanhas);
 
+        // Garante que o número não passe do tamanho do array
+        estrelasGanhas = Mathf.Clamp(estrelasGanhas, 0, estrelas.Length);
+
+        // Liga apenas a quantidade correta de estrelas
         for (int i = 0; i < estrelas.Length; i++)
-            estrelas[i].SetActive(i < vidas);
+        {
+            estrelas[i].SetActive(i < estrelasGanhas);
+        }
     }
-
 }
