@@ -53,17 +53,14 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    // Procura Texts na cena atual pelo NOME
     void OnSceneLoaded(Scene cena, LoadSceneMode modo)
     {
-        // Quando volta para a tela inicial, zera o jogo
         if (cena.name == "Inicio")
         {
             vidas = vidasMax;
             score = 0;
         }
-
-        // Procura Texts na cena atual pelo NOME
+    // procura os textos
         var scoreObj = GameObject.Find("pontosText");
         pontosText = scoreObj ? scoreObj.GetComponent<TextMeshProUGUI>() : null;
 
@@ -87,14 +84,14 @@ public class GameManager : MonoBehaviour
             vidasText.text = vidas.ToString("00") + "/" + vidasMax.ToString("00");
     }
 
-    // ========= SCORE =========
+    // PONTOS
     public void AddScore(int amount)
     {
         score += amount;
         AtualizaPontosUI();
     }
 
-    // ========= VIDAS =========
+    //  VIDAS 
     public void PerderVida()
     {
         vidas--;
@@ -116,7 +113,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // ========= FINAL DA FASE =========
+    // FINAL DA FASE - se chegou no castelo
    public void FinalDaFase()
     {
         if (score < 5)

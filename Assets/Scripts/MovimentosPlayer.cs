@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // =================== MORTE =====================
+    //  MORTE 
 
     public void Death()
     {
@@ -105,8 +105,7 @@ public class PlayerMovement : MonoBehaviour
         // Desativa física
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().simulated = false;
-
-        // Chama o GameManager
+        
         GameManager.instance.PerderVida();
 
         Destroy(gameObject);

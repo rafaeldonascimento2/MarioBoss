@@ -71,7 +71,7 @@ public class Goomba : MonoBehaviour
         }
         else
         {
-            vidaPlayer.TomarDano();   // <-- corrigido
+            vidaPlayer.TomarDano();  
         }
     }
 

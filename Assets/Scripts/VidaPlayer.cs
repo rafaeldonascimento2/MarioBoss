@@ -19,7 +19,6 @@ public class VidaPlayer : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         movimentos = GetComponent<PlayerMovement>();
 
-        // procura automaticamente o texto no Canvas
         vidasText = GameObject.Find("vidasText").GetComponent<TextMeshProUGUI>();
         AtualizarHUD();
     }
